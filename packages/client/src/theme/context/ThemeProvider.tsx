@@ -3,6 +3,7 @@ import { useAtom } from 'jotai';
 import { IThemeRGB } from '../types';
 import applyTheme from '../utils/applyTheme';
 import { themeModeAtom, themeColorsAtom, themeNameAtom } from '../atoms/themeAtoms';
+import { defaultTheme, darkTheme } from '../themes';
 
 type ThemeContextType = {
   theme: string; // 'light' | 'dark' | 'system'
@@ -110,11 +111,18 @@ export function ThemeProvider({
   }, [theme, applyThemeMode]);
 
   // Apply dynamic color theme
+  // If no custom theme is stored, automatically apply default themes based on mode
   useEffect(() => {
     if (storedThemeRGB) {
+      // Apply custom theme if one is stored
       applyTheme(storedThemeRGB);
+    } else {
+      // Apply default theme (Figma themes) based on current mode
+      const darkMode = isDark(theme);
+      const themeToApply = darkMode ? darkTheme : defaultTheme;
+      applyTheme(themeToApply);
     }
-  }, [storedThemeRGB]);
+  }, [storedThemeRGB, theme]);
 
   // Reset theme function
   const resetTheme = useCallback(() => {

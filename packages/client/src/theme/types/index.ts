@@ -1,186 +1,182 @@
 /**
- * Defines the color channels. Passed to the context from each app.
+ * Defines the color channels from Figma Shadcn UI 2025 Kit.
  * RGB values should be in format "255 255 255" (space-separated)
+ * Only includes colors that exist in the Figma design system.
  */
 export interface IThemeRGB {
-  // Text colors
-  'rgb-text-primary'?: string;
-  'rgb-text-secondary'?: string;
-  'rgb-text-secondary-alt'?: string;
-  'rgb-text-tertiary'?: string;
-  'rgb-text-warning'?: string;
-
-  // Ring colors
-  'rgb-ring-primary'?: string;
-
-  // Header colors
-  'rgb-header-primary'?: string;
-  'rgb-header-hover'?: string;
-  'rgb-header-button-hover'?: string;
-
-  // Surface colors
-  'rgb-surface-active'?: string;
-  'rgb-surface-active-alt'?: string;
-  'rgb-surface-hover'?: string;
-  'rgb-surface-hover-alt'?: string;
-  'rgb-surface-primary'?: string;
-  'rgb-surface-primary-alt'?: string;
-  'rgb-surface-primary-contrast'?: string;
-  'rgb-surface-secondary'?: string;
-  'rgb-surface-secondary-alt'?: string;
-  'rgb-surface-tertiary'?: string;
-  'rgb-surface-tertiary-alt'?: string;
-  'rgb-surface-dialog'?: string;
-  'rgb-surface-submit'?: string;
-  'rgb-surface-submit-hover'?: string;
-  'rgb-surface-destructive'?: string;
-  'rgb-surface-destructive-hover'?: string;
-  'rgb-surface-chat'?: string;
-
-  // Border colors
-  'rgb-border-light'?: string;
-  'rgb-border-medium'?: string;
-  'rgb-border-medium-alt'?: string;
-  'rgb-border-heavy'?: string;
-  'rgb-border-xheavy'?: string;
-
-  // Brand colors
-  'rgb-brand-purple'?: string;
-
-  // Presentation
-  'rgb-presentation'?: string;
-
-  // Utility colors
+  // Core colors
   'rgb-background'?: string;
   'rgb-foreground'?: string;
+  
+  // Card colors
+  'rgb-card'?: string;
+  'rgb-card-foreground'?: string;
+  
+  // Popover colors
+  'rgb-popover'?: string;
+  'rgb-popover-foreground'?: string;
+  
+  // Primary colors
   'rgb-primary'?: string;
   'rgb-primary-foreground'?: string;
+  
+  // Secondary colors
   'rgb-secondary'?: string;
   'rgb-secondary-foreground'?: string;
+  
+  // Muted colors
   'rgb-muted'?: string;
   'rgb-muted-foreground'?: string;
+  
+  // Accent colors
   'rgb-accent'?: string;
   'rgb-accent-foreground'?: string;
+  
+  // Destructive colors
+  'rgb-destructive'?: string;
   'rgb-destructive-foreground'?: string;
+  
+  // Border and input
   'rgb-border'?: string;
   'rgb-input'?: string;
   'rgb-ring'?: string;
-  'rgb-card'?: string;
-  'rgb-card-foreground'?: string;
+  
+  // Sidebar colors
+  'rgb-sidebar-background'?: string;
+  'rgb-sidebar-foreground'?: string;
+  'rgb-sidebar-primary'?: string;
+  'rgb-sidebar-primary-foreground'?: string;
+  'rgb-sidebar-accent'?: string;
+  'rgb-sidebar-accent-foreground'?: string;
+  'rgb-sidebar-border'?: string;
+  'rgb-sidebar-ring'?: string;
+  
+  // Chart colors
+  'rgb-chart-1'?: string;
+  'rgb-chart-2'?: string;
+  'rgb-chart-3'?: string;
+  'rgb-chart-4'?: string;
+  'rgb-chart-5'?: string;
 }
 
 /**
  * Name of the CSS variables used in tailwind.config
+ * Only includes Figma design system variables
  */
 export interface IThemeVariables {
-  '--text-primary': string;
-  '--text-secondary': string;
-  '--text-secondary-alt': string;
-  '--text-tertiary': string;
-  '--text-warning': string;
-  '--ring-primary': string;
-  '--header-primary': string;
-  '--header-hover': string;
-  '--header-button-hover': string;
-  '--surface-active': string;
-  '--surface-active-alt': string;
-  '--surface-hover': string;
-  '--surface-hover-alt': string;
-  '--surface-primary': string;
-  '--surface-primary-alt': string;
-  '--surface-primary-contrast': string;
-  '--surface-secondary': string;
-  '--surface-secondary-alt': string;
-  '--surface-tertiary': string;
-  '--surface-tertiary-alt': string;
-  '--surface-dialog': string;
-  '--surface-submit': string;
-  '--surface-submit-hover': string;
-  '--surface-destructive': string;
-  '--surface-destructive-hover': string;
-  '--surface-chat': string;
-  '--border-light': string;
-  '--border-medium': string;
-  '--border-medium-alt': string;
-  '--border-heavy': string;
-  '--border-xheavy': string;
-  '--brand-purple': string;
-  '--presentation': string;
-
-  // Utility variables
+  // Core variables
   '--background': string;
   '--foreground': string;
+  
+  // Card variables
+  '--card': string;
+  '--card-foreground': string;
+  
+  // Popover variables
+  '--popover': string;
+  '--popover-foreground': string;
+  
+  // Primary variables
   '--primary': string;
   '--primary-foreground': string;
+  
+  // Secondary variables
   '--secondary': string;
   '--secondary-foreground': string;
+  
+  // Muted variables
   '--muted': string;
   '--muted-foreground': string;
+  
+  // Accent variables
   '--accent': string;
   '--accent-foreground': string;
+  
+  // Destructive variables
+  '--destructive': string;
   '--destructive-foreground': string;
+  
+  // Border and input
   '--border': string;
   '--input': string;
   '--ring': string;
-  '--card': string;
-  '--card-foreground': string;
+  
+  // Sidebar variables
+  '--sidebar-background': string;
+  '--sidebar-foreground': string;
+  '--sidebar-primary': string;
+  '--sidebar-primary-foreground': string;
+  '--sidebar-accent': string;
+  '--sidebar-accent-foreground': string;
+  '--sidebar-border': string;
+  '--sidebar-ring': string;
+  
+  // Chart variables
+  '--chart-1': string;
+  '--chart-2': string;
+  '--chart-3': string;
+  '--chart-4': string;
+  '--chart-5': string;
 }
 
 /**
  * Name of the defined colors in the Tailwind theme
+ * Only includes Figma design system colors
  */
 export interface IThemeColors {
-  'text-primary'?: string;
-  'text-secondary'?: string;
-  'text-secondary-alt'?: string;
-  'text-tertiary'?: string;
-  'text-warning'?: string;
-  'ring-primary'?: string;
-  'header-primary'?: string;
-  'header-hover'?: string;
-  'header-button-hover'?: string;
-  'surface-active'?: string;
-  'surface-active-alt'?: string;
-  'surface-hover'?: string;
-  'surface-hover-alt'?: string;
-  'surface-primary'?: string;
-  'surface-primary-alt'?: string;
-  'surface-primary-contrast'?: string;
-  'surface-secondary'?: string;
-  'surface-secondary-alt'?: string;
-  'surface-tertiary'?: string;
-  'surface-tertiary-alt'?: string;
-  'surface-dialog'?: string;
-  'surface-submit'?: string;
-  'surface-submit-hover'?: string;
-  'surface-destructive'?: string;
-  'surface-destructive-hover'?: string;
-  'surface-chat'?: string;
-  'border-light'?: string;
-  'border-medium'?: string;
-  'border-medium-alt'?: string;
-  'border-heavy'?: string;
-  'border-xheavy'?: string;
-  'brand-purple'?: string;
-  presentation?: string;
-
-  // Utility colors
+  // Core colors
   background?: string;
   foreground?: string;
+  
+  // Card colors
+  card?: string;
+  'card-foreground'?: string;
+  
+  // Popover colors
+  popover?: string;
+  'popover-foreground'?: string;
+  
+  // Primary colors
   primary?: string;
   'primary-foreground'?: string;
+  
+  // Secondary colors
   secondary?: string;
   'secondary-foreground'?: string;
+  
+  // Muted colors
   muted?: string;
   'muted-foreground'?: string;
+  
+  // Accent colors
   accent?: string;
   'accent-foreground'?: string;
+  
+  // Destructive colors
+  destructive?: string;
   'destructive-foreground'?: string;
+  
+  // Border and input
   border?: string;
   input?: string;
   ring?: string;
-  card?: string;
-  'card-foreground'?: string;
+  
+  // Sidebar colors
+  'sidebar-background'?: string;
+  'sidebar-foreground'?: string;
+  'sidebar-primary'?: string;
+  'sidebar-primary-foreground'?: string;
+  'sidebar-accent'?: string;
+  'sidebar-accent-foreground'?: string;
+  'sidebar-border'?: string;
+  'sidebar-ring'?: string;
+  
+  // Chart colors
+  'chart-1'?: string;
+  'chart-2'?: string;
+  'chart-3'?: string;
+  'chart-4'?: string;
+  'chart-5'?: string;
 }
 
 export interface Theme {

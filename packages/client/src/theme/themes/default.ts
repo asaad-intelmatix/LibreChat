@@ -1,72 +1,64 @@
 import { IThemeRGB } from '../types';
 
 /**
- * Default light theme
- * RGB values extracted from the existing CSS variables
+ * Default light theme - Figma Shadcn UI 2025 Kit colors
+ * Source: https://www.figma.com/design/Jj5cQA5KqJvP0KdavksRae/Shadcn_ui-2025-kit--Community-?node-id=47-5051&m=dev&vars=1&var-set-id=133-12047
+ * 
+ * All 32 colors extracted from Figma design system.
+ * Colors are converted from hex to space-separated RGB format.
  */
 export const defaultTheme: IThemeRGB = {
-  // Text colors
-  'rgb-text-primary': '33 33 33', // #212121 (gray-800)
-  'rgb-text-secondary': '66 66 66', // #424242 (gray-600)
-  'rgb-text-secondary-alt': '89 89 89', // #595959 (gray-500)
-  'rgb-text-tertiary': '89 89 89', // #595959 (gray-500)
-  'rgb-text-warning': '245 158 11', // #f59e0b (amber-500)
-
-  // Ring colors
-  'rgb-ring-primary': '89 89 89', // #595959 (gray-500)
-
-  // Header colors
-  'rgb-header-primary': '255 255 255', // #fff (white)
-  'rgb-header-hover': '247 247 248', // #f7f7f8 (gray-50)
-  'rgb-header-button-hover': '247 247 248', // #f7f7f8 (gray-50)
-
-  // Surface colors
-  'rgb-surface-active': '236 236 236', // #ececec (gray-100)
-  'rgb-surface-active-alt': '227 227 227', // #e3e3e3 (gray-200)
-  'rgb-surface-hover': '227 227 227', // #e3e3e3 (gray-200)
-  'rgb-surface-hover-alt': '205 205 205', // #cdcdcd (gray-300)
-  'rgb-surface-primary': '255 255 255', // #fff (white)
-  'rgb-surface-primary-alt': '247 247 248', // #f7f7f8 (gray-50)
-  'rgb-surface-primary-contrast': '236 236 236', // #ececec (gray-100)
-  'rgb-surface-secondary': '247 247 248', // #f7f7f8 (gray-50)
-  'rgb-surface-secondary-alt': '227 227 227', // #e3e3e3 (gray-200)
-  'rgb-surface-tertiary': '236 236 236', // #ececec (gray-100)
-  'rgb-surface-tertiary-alt': '255 255 255', // #fff (white)
-  'rgb-surface-dialog': '255 255 255', // #fff (white)
-  'rgb-surface-submit': '4 120 87', // #047857 (green-700)
-  'rgb-surface-submit-hover': '6 95 70', // #065f46 (green-800)
-  'rgb-surface-destructive': '185 28 28', // #b91c1c (red-700)
-  'rgb-surface-destructive-hover': '153 27 27', // #991b1b (red-800)
-  'rgb-surface-chat': '255 255 255', // #fff (white)
-
-  // Border colors
-  'rgb-border-light': '227 227 227', // #e3e3e3 (gray-200)
-  'rgb-border-medium': '205 205 205', // #cdcdcd (gray-300)
-  'rgb-border-medium-alt': '205 205 205', // #cdcdcd (gray-300)
-  'rgb-border-heavy': '153 150 150', // #999696 (gray-400)
-  'rgb-border-xheavy': '89 89 89', // #595959 (gray-500)
-
-  // Brand colors
-  'rgb-brand-purple': '171 104 255', // #ab68ff
-
-  // Presentation
-  'rgb-presentation': '255 255 255', // #fff (white)
-
-  // Utility colors (mapped to existing colors for backwards compatibility)
-  'rgb-background': '255 255 255', // Same as surface-primary
-  'rgb-foreground': '17 17 17', // Same as text-primary
-  'rgb-primary': '235 235 235', // Same as surface-active
-  'rgb-primary-foreground': '0 0 0', // Same as surface-primary-contrast
-  'rgb-secondary': '247 247 248', // Same as surface-secondary
-  'rgb-secondary-foreground': '66 66 66', // Same as text-secondary
-  'rgb-muted': '250 250 250', // Same as surface-tertiary
-  'rgb-muted-foreground': '120 120 120', // Same as text-tertiary
-  'rgb-accent': '245 245 245', // Same as surface-active-alt
-  'rgb-accent-foreground': '17 17 17', // Same as text-primary
-  'rgb-destructive-foreground': '17 17 17', // Same as text-primary
-  'rgb-border': '215 215 215', // Same as border-medium
-  'rgb-input': '230 230 230', // Same as border-light
-  'rgb-ring': '180 180 180', // Same as ring-primary
-  'rgb-card': '247 247 248', // Same as surface-secondary
-  'rgb-card-foreground': '17 17 17', // Same as text-primary
+  // Core colors
+  'rgb-background': '255 255 255', // #ffffff
+  'rgb-foreground': '9 9 11', // #09090b
+  
+  // Card colors
+  'rgb-card': '255 255 255', // #ffffff
+  'rgb-card-foreground': '9 9 11', // #09090b
+  
+  // Popover colors
+  'rgb-popover': '255 255 255', // #ffffff
+  'rgb-popover-foreground': '9 9 11', // #09090b
+  
+  // Primary colors
+  'rgb-primary': '24 24 27', // #18181b
+  'rgb-primary-foreground': '250 250 250', // #fafafa
+  
+  // Secondary colors
+  'rgb-secondary': '244 244 245', // #f4f4f5
+  'rgb-secondary-foreground': '24 24 27', // #18181b
+  
+  // Muted colors
+  'rgb-muted': '244 244 245', // #f4f4f5
+  'rgb-muted-foreground': '113 113 122', // #71717a
+  
+  // Accent colors
+  'rgb-accent': '244 244 245', // #f4f4f5
+  'rgb-accent-foreground': '24 24 27', // #18181b
+  
+  // Destructive colors
+  'rgb-destructive': '239 68 68', // #ef4444
+  'rgb-destructive-foreground': '250 250 250', // #fafafa
+  
+  // Border and input
+  'rgb-border': '228 228 231', // #e4e4e7
+  'rgb-input': '228 228 231', // #e4e4e7
+  'rgb-ring': '24 24 27', // #18181b
+  
+  // Sidebar colors
+  'rgb-sidebar-background': '250 250 250', // #fafafa
+  'rgb-sidebar-foreground': '63 63 70', // #3f3f46
+  'rgb-sidebar-primary': '24 24 27', // #18181b
+  'rgb-sidebar-primary-foreground': '250 250 250', // #fafafa
+  'rgb-sidebar-accent': '244 244 245', // #f4f4f5
+  'rgb-sidebar-accent-foreground': '24 24 27', // #18181b
+  'rgb-sidebar-border': '229 231 235', // #e5e7eb
+  'rgb-sidebar-ring': '59 130 246', // #3b82f6
+  
+  // Chart colors
+  'rgb-chart-1': '42 157 144', // #2a9d90
+  'rgb-chart-2': '231 110 80', // #e76e50
+  'rgb-chart-3': '39 71 84', // #274754
+  'rgb-chart-4': '232 196 104', // #e8c468
+  'rgb-chart-5': '244 164 98', // #f4a462
 };
