@@ -8,6 +8,12 @@ import {
   TwoFactorScreen,
   RequestPasswordReset,
 } from '~/components/Auth';
+import {
+  WelcomeLayout,
+  WelcomePage,
+  MuneeraWelcomePage,
+  HaithamWelcomePage,
+} from '~/components/DigitalWorkers';
 import { MarketplaceProvider } from '~/components/Agents/MarketplaceContext';
 import AgentMarketplace from '~/components/Agents/Marketplace';
 import { OAuthSuccess, OAuthError } from '~/components/OAuth';
@@ -94,11 +100,29 @@ export const router = createBrowserRouter(
             },
           ],
         },
+        {
+          element: <WelcomeLayout />,
+          children: [
+            {
+              index: true,
+              element: <WelcomePage />,
+            },
+            {
+              path: 'workers/muneera',
+              element: <MuneeraWelcomePage />,
+            },
+            {
+              path: 'workers/haitham',
+              element: <HaithamWelcomePage />,
+            },
+          ],
+        },
         dashboardRoutes,
         {
           path: '/',
           element: <Root />,
           children: [
+            {},
             {
               index: true,
               element: <Navigate to="/c/new" replace={true} />,
