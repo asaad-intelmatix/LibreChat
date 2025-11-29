@@ -34,10 +34,8 @@ export default function WelcomePage() {
       <div className="w-full max-w-[1432px]">
         {/* Header Section */}
         <div className="mb-8 text-right">
-          <h1 className="mb-2 text-lg font-medium text-gray-900 dark:text-white">
-            العاملين الرقميّين
-          </h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400">تعريف عام عن المنصة</p>
+          <h1 className="mb-2 text-lg font-medium text-foreground">العاملين الرقميّين</h1>
+          <p className="text-sm text-muted-foreground">تعريف عام عن المنصة</p>
         </div>
 
         {/* Workers Grid */}
