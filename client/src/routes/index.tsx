@@ -122,11 +122,10 @@ export const router = createBrowserRouter(
           path: '/',
           element: <Root />,
           children: [
-            {},
-            {
-              index: true,
-              element: <Navigate to="/c/new" replace={true} />,
-            },
+            // {
+            //   index: true,
+            //   element: <Navigate to="/c/new" replace={true} />,
+            // },
             {
               path: 'c/:conversationId?',
               element: <ChatRoute />,

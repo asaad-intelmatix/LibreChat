@@ -2,10 +2,14 @@ import { Outlet, useLocation } from 'react-router-dom';
 import ProfileComponent from './ProfileComponent';
 import WorkerSelector from './WorkerSelector';
 import NavLinks from './NavLinks';
+import { ThemeContext, isDark } from '@librechat/client';
+import { useContext } from 'react';
 
 export default function WelcomeLayout() {
   const location = useLocation();
+  const { theme } = useContext(ThemeContext);
 
+  const isDarkTheme = isDark(theme);
   // Determine which worker is active based on the path
   const currentWorker = location.pathname.includes('/workers/muneera')
     ? 'muneera'
@@ -33,7 +37,7 @@ export default function WelcomeLayout() {
       <footer className="flex justify-end px-10 py-6">
         <div className="h-[58px] w-[194.3px]">
           <img
-            src="/assets/rcmc-logo.svg"
+            src={isDarkTheme ? '/assets/rcmc-logo-dark-theme.svg' : '/assets/rcmc-logo.svg'}
             alt="Royal Commission for Makkah City and Holy Sites"
             className="h-full w-full object-contain"
           />

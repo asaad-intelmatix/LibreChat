@@ -60,9 +60,7 @@ export default function WorkerSelector() {
         type="button"
         key={`worker-selector-${worker.id}`}
         className={`flex w-full items-center gap-2 rounded px-2 py-2 text-right transition-colors ${
-          currentWorkerId === worker.id
-            ? 'bg-gray-100 dark:bg-gray-700'
-            : 'hover:bg-gray-50 dark:hover:bg-gray-700'
+          currentWorkerId === worker.id ? 'bg-sidebar-background' : 'bg-transparent hover:bg-muted'
         }`}
       >
         <div className="relative h-8 w-8 overflow-hidden rounded-lg">
@@ -90,15 +88,18 @@ export default function WorkerSelector() {
   });
 
   const trigger = (
-    <Ariakit.MenuButton className="flex h-12 items-center gap-2 rounded-md bg-gray-50 px-2 py-2 transition-colors hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700">
-      <ChevronsUpDown className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+    <Ariakit.MenuButton
+      // disabled={location.pathname === '/'}
+      className="flex h-12 items-center gap-2 rounded-md bg-sidebar-background px-2 py-2 text-sidebar-foreground transition-colors"
+    >
+      <ChevronsUpDown className="h-4 w-4" />
       {currentWorker ? (
         <>
           <div className="flex flex-col items-end text-right">
-            <div className="text-sm font-semibold text-gray-900 dark:text-white">
+            <div className="text-sm font-semibold text-sidebar-foreground">
               {currentWorker.name}
             </div>
-            <div className="text-xs text-gray-500 dark:text-gray-400">{currentWorker.title}</div>
+            <div className="text-xs">{currentWorker.title}</div>
           </div>
           <div className="relative h-8 w-8 overflow-hidden rounded-lg bg-[linear-gradient(135deg,#887852_0%,rgba(136,120,82,0.30)_100%)] shadow-sm">
             <img
@@ -109,7 +110,7 @@ export default function WorkerSelector() {
           </div>
         </>
       ) : (
-        <div className="flex items-center gap-2 bg-sidebar-background text-sidebar-foreground">
+        <div className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-[11.2px] bg-[linear-gradient(135deg,#887852_0%,rgba(136,120,82,0.30)_100%)]"></div>
           <div className="flex flex-col">
             <span className="text-sm font-semibold">RCMC</span>
@@ -131,8 +132,8 @@ export default function WorkerSelector() {
       sameWidth={false}
       gutter={8}
       placement="bottom-start"
-      className="w-64 rounded-md border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800"
-      itemClassName="px-2 py-2"
+      className="w-64 rounded-md border border-border !bg-background"
+      itemClassName="px-2 py-2 text-sidebar-foreground"
     />
   );
 }

@@ -7,11 +7,11 @@ export default function WorkerLayout() {
   const { user } = useAuthContext();
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-white dark:bg-gray-900">
+    <div className="relative flex min-h-screen flex-col bg-background">
       <div className="flex flex-grow">
         <div className="flex w-full flex-col">
           {/* Navigation Bar */}
-          <nav className="flex items-center justify-between gap-3 border-b border-gray-200 bg-white px-10 py-6 dark:border-gray-700 dark:bg-gray-800">
+          <nav className="flex items-center justify-between gap-3">
             <ProfileComponent />
             <WorkerSelector />
           </nav>

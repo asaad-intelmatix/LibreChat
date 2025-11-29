@@ -55,15 +55,13 @@ export default function ProfileComponent() {
 
   // Language selector row
   const LanguageSelectorRow = () => (
-    <div className="flex items-center justify-center rounded">
+    <div className="flex items-center justify-center rounded text-foreground">
       <div className="flex flex-1 items-center gap-1">
-        <div className="flex h-6 items-center rounded-md bg-gray-100 p-0.5 dark:bg-gray-700">
+        <div className="flex h-6 items-center rounded-md bg-muted p-[2.4px]">
           <button
             onClick={() => handleLangChange('ar')}
             className={`flex items-center justify-center rounded px-1.5 py-0.5 text-[8.4px] font-medium transition-all ${
-              currentLang === 'ar'
-                ? 'bg-white text-gray-900 shadow-sm dark:bg-gray-600 dark:text-white'
-                : 'text-gray-900 dark:text-gray-300'
+              currentLang === 'ar' ? 'bg-background' : 'bg-transparent'
             }`}
           >
             العربية
@@ -71,21 +69,19 @@ export default function ProfileComponent() {
           <button
             onClick={() => handleLangChange('en')}
             className={`flex items-center justify-center rounded px-1.5 py-0.5 text-[8.4px] font-medium transition-all ${
-              currentLang === 'en'
-                ? 'bg-white text-gray-900 shadow-sm dark:bg-gray-600 dark:text-white'
-                : 'text-gray-900 dark:text-gray-300'
+              currentLang === 'en' ? 'bg-background' : 'bg-transparent'
             }`}
           >
             الإنجليزية
           </button>
         </div>
-        <div className="flex flex-1 flex-col text-sm font-normal text-gray-900 dark:text-gray-100">
+        <div className="flex flex-1 flex-col text-sm font-normal">
           <p className="text-right leading-tight" dir="auto">
             اللغة
           </p>
         </div>
         <div className="flex items-center justify-end py-0 pr-0">
-          <Languages className="h-3.5 w-3.5 text-gray-900 dark:text-gray-100" />
+          <Languages className="h-3.5 w-3.5" />
         </div>
       </div>
     </div>
@@ -93,15 +89,13 @@ export default function ProfileComponent() {
 
   // Theme selector row
   const ThemeSelectorRow = () => (
-    <div className="flex items-center justify-center rounded">
+    <div className="flex items-center justify-center rounded text-foreground">
       <div className="flex flex-1 items-center gap-1">
-        <div className="flex h-6 items-center rounded-md bg-gray-100 p-0.5 dark:bg-gray-700">
+        <div className="flex h-6 items-center rounded-md bg-muted p-[2.4px]">
           <button
             onClick={() => handleThemeChange('light')}
             className={`flex items-center justify-center rounded px-1.5 py-0.5 text-[8.4px] font-medium transition-all ${
-              currentTheme === 'light'
-                ? 'bg-white text-gray-900 shadow-sm dark:bg-gray-600 dark:text-white'
-                : 'text-gray-900 dark:text-gray-300'
+              currentTheme === 'light' ? 'bg-background' : 'bg-transparent'
             }`}
           >
             فاتح
@@ -109,21 +103,19 @@ export default function ProfileComponent() {
           <button
             onClick={() => handleThemeChange('dark')}
             className={`flex items-center justify-center rounded px-1.5 py-0.5 text-[8.4px] font-medium transition-all ${
-              currentTheme === 'dark'
-                ? 'bg-white text-gray-900 shadow-sm dark:bg-gray-600 dark:text-white'
-                : 'text-gray-900 dark:text-gray-300'
+              currentTheme === 'dark' ? 'bg-background' : 'bg-transparent'
             }`}
           >
             داكن
           </button>
         </div>
-        <div className="flex flex-1 flex-col text-sm font-normal text-gray-900 dark:text-gray-100">
+        <div className="flex flex-1 flex-col text-sm font-normal">
           <p className="text-right leading-tight" dir="auto">
             المظهر
           </p>
         </div>
         <div className="flex items-center justify-end py-0 pr-0">
-          <Palette className="h-3.5 w-3.5 text-gray-900 dark:text-gray-100" />
+          <Palette className="h-3.5 w-3.5" />
         </div>
       </div>
     </div>
@@ -134,8 +126,8 @@ export default function ProfileComponent() {
       label: 'حسابي',
       render: () => (
         <div className="flex items-center justify-center rounded">
-          <div className="flex flex-1 flex-col bg-sidebar-background text-xs font-semibold text-sidebar-foreground">
-            <p className="text-right leading-tight text-sidebar-foreground">حسابي</p>
+          <div className="flex flex-1 flex-col text-xs font-semibold text-sidebar-foreground">
+            <p className="text-right leading-tight">حسابي</p>
           </div>
         </div>
       ),
@@ -154,7 +146,7 @@ export default function ProfileComponent() {
     { separate: true },
     {
       render: () => (
-        <div className="flex items-center justify-between bg-sidebar-background text-sidebar-foreground">
+        <div className="flex items-center justify-between text-sm text-sidebar-foreground">
           <button onClick={handleLogout} className="flex-1 bg-transparent">
             <LogOut className="h-3.5 w-3.5" />
           </button>
@@ -193,7 +185,7 @@ export default function ProfileComponent() {
       gutter={8}
       placement="bottom-start"
       className="w-64 rounded-md border border-border bg-sidebar-background"
-      itemClassName="px-2 py-1.5 bg-sidebar-background text-sidebar-foreground hover:bg-gray-100 dark:hover:bg-gray-700"
+      itemClassName="px-2 py-1.5"
     />
   );
 }
