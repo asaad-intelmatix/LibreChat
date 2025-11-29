@@ -35,12 +35,12 @@ export default function MuneeraWelcomePage() {
             </h3>
           </div>
 
-          <div className="flex gap-[14px] justify-end">
+          <div className="flex justify-end gap-[14px]">
             <button className="flex h-14 items-center justify-center rounded-lg border border-gray-200 bg-white px-[22.4px] py-[11.2px] text-sm font-medium text-gray-900 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700">
               xxx
             </button>
             <button className="flex h-14 items-center justify-center rounded-lg border border-gray-200 bg-white px-[22.4px] py-[11.2px] text-sm font-medium text-gray-900 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700">
-              محدثات
+              محادثة
             </button>
           </div>
         </div>
@@ -48,4 +48,3 @@ export default function MuneeraWelcomePage() {
     </div>
   );
 }
-

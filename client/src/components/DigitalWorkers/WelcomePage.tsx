@@ -46,7 +46,7 @@ export default function WelcomePage() {
             <button
               key={worker.id}
               onClick={() => handleWorkerSelect(worker.id)}
-              className="group flex flex-col items-start rounded-md border border-gray-200 bg-white transition-all hover:border-indigo-500 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:border-indigo-400"
+              className="group flex flex-col items-start rounded-md bg-background transition-all hover:shadow-lg dark:hover:shadow-gray-700"
             >
               <div className="relative h-[333px] w-full overflow-hidden rounded-t-md bg-gray-100 dark:bg-gray-700">
                 <img
@@ -62,10 +62,8 @@ export default function WelcomePage() {
                 />
               </div>
               <div className="w-full p-3 text-right">
-                <h2 className="mb-1 text-xl font-semibold text-gray-900 dark:text-white">
-                  {worker.name}
-                </h2>
-                <p className="text-base text-gray-500 dark:text-gray-400">{worker.title}</p>
+                <h2 className="mb-1 text-xl font-semibold text-foreground">{worker.name}</h2>
+                <p className="text-base text-muted-foreground">{worker.title}</p>
               </div>
             </button>
           ))}
