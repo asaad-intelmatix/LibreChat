@@ -100,32 +100,28 @@ export const router = createBrowserRouter(
             },
           ],
         },
-        {
-          element: <WelcomeLayout />,
-          children: [
-            {
-              index: true,
-              element: <WelcomePage />,
-            },
-            {
-              path: 'workers/muneera',
-              element: <MuneeraWelcomePage />,
-            },
-            {
-              path: 'workers/haitham',
-              element: <HaithamWelcomePage />,
-            },
-          ],
-        },
         dashboardRoutes,
         {
           path: '/',
           element: <Root />,
           children: [
-            // {
-            //   index: true,
-            //   element: <Navigate to="/c/new" replace={true} />,
-            // },
+            {
+              element: <WelcomeLayout />,
+              children: [
+                {
+                  index: true,
+                  element: <WelcomePage />,
+                },
+                {
+                  path: 'workers/muneera',
+                  element: <MuneeraWelcomePage />,
+                },
+                {
+                  path: 'workers/haitham',
+                  element: <HaithamWelcomePage />,
+                },
+              ],
+            },
             {
               path: 'c/:conversationId?',
               element: <ChatRoute />,

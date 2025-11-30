@@ -1,13 +1,15 @@
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, Navigate } from 'react-router-dom';
 import ProfileComponent from './ProfileComponent';
 import WorkerSelector from './WorkerSelector';
 import NavLinks from './NavLinks';
 import { ThemeContext, isDark } from '@librechat/client';
 import { useContext } from 'react';
+import { useAuthContext } from '~/hooks';
 
 export default function WelcomeLayout() {
   const location = useLocation();
   const { theme } = useContext(ThemeContext);
+  const { isAuthenticated } = useAuthContext();
 
   const isDarkTheme = isDark(theme);
   // Determine which worker is active based on the path
@@ -16,6 +18,10 @@ export default function WelcomeLayout() {
     : location.pathname.includes('/workers/haitham')
       ? 'haitham'
       : null;
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace={true} />;
+  }
 
   return (
     <div className="relative flex min-h-screen flex-col bg-background">
