@@ -1,11 +1,14 @@
-import { Outlet } from 'react-router-dom';
-import { useAuthContext } from '~/hooks/AuthContext';
+import { Outlet, useOutletContext } from 'react-router-dom';
 import ProfileComponent from '../../components/DigitalWorkers/ProfileComponent';
 import WorkerSelector from '../../components/DigitalWorkers/WorkerSelector';
+import { useEffect } from 'react';
+import { ContextType } from '~/common';
 
 export default function WorkerLayout() {
-  const { user } = useAuthContext();
-
+  const { setNavVisible } = useOutletContext() satisfies ContextType;
+  useEffect(() => {
+    setNavVisible(true);
+  }, []);
   return (
     <div className="relative flex min-h-screen flex-col bg-background">
       <div className="flex flex-grow">
