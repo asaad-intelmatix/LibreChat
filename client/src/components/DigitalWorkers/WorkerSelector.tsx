@@ -59,20 +59,20 @@ export default function WorkerSelector() {
         onClick={() => handleWorkerSelect(worker.id)}
         type="button"
         key={`worker-selector-${worker.id}`}
-        className={`flex w-full items-center gap-2 rounded px-2 py-2 text-right transition-colors ${
+        className={`flex w-full items-center gap-2 rounded px-2 py-2 transition-colors ${
           currentWorkerId === worker.id ? 'bg-sidebar-background' : 'bg-transparent hover:bg-muted'
         }`}
       >
+        <div className="flex flex-1 flex-col items-start text-sidebar-foreground">
+          <span className="text-sm font-semibold">{worker.name}</span>
+          <span className="text-xs">{worker.title}</span>
+        </div>
         <div className="relative h-8 w-8 overflow-hidden rounded-lg">
           <img
             src={worker.image}
             alt={worker.name}
             className="absolute inset-0 size-full max-w-none object-cover"
           />
-        </div>
-        <div className="flex flex-1 flex-col items-end text-sidebar-foreground">
-          <span className="text-sm font-semibold">{worker.name}</span>
-          <span className="text-xs">{worker.title}</span>
         </div>
       </button>
     ),
@@ -88,19 +88,9 @@ export default function WorkerSelector() {
   });
 
   const trigger = (
-    <Ariakit.MenuButton
-      // disabled={location.pathname === '/'}
-      className="flex h-12 items-center gap-2 rounded-md bg-sidebar-background px-2 py-2 text-sidebar-foreground transition-colors"
-    >
-      <ChevronsUpDown className="h-4 w-4" />
+    <Ariakit.MenuButton className="flex h-12 items-center gap-2 rounded-md bg-sidebar-background px-2 py-2 text-sidebar-foreground transition-colors">
       {currentWorker ? (
         <>
-          <div className="flex flex-col items-end text-right">
-            <div className="text-sm font-semibold text-sidebar-foreground">
-              {currentWorker.name}
-            </div>
-            <div className="text-xs">{currentWorker.title}</div>
-          </div>
           <div className="relative h-8 w-8 overflow-hidden rounded-lg bg-[linear-gradient(135deg,#887852_0%,rgba(136,120,82,0.30)_100%)] shadow-sm">
             <img
               src={currentWorker.image}
@@ -108,16 +98,23 @@ export default function WorkerSelector() {
               className="absolute inset-0 size-full max-w-none object-cover opacity-70"
             />
           </div>
+          <div className="flex flex-col items-end text-right">
+            <div className="text-sm font-semibold text-sidebar-foreground">
+              {currentWorker.name}
+            </div>
+            <div className="text-xs">{currentWorker.title}</div>
+          </div>
         </>
       ) : (
         <div className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-[11.2px] bg-[linear-gradient(135deg,#887852_0%,rgba(136,120,82,0.30)_100%)]"></div>
           <div className="flex flex-col">
-            <span className="text-sm font-semibold">RCMC</span>
+            <span className="text-sm font-semibold ltr:text-left rtl:text-right">RCMC</span>
             <span className="text-xs">منصّة العاملين الرقميّين </span>
           </div>
         </div>
       )}
+      <ChevronsUpDown className="h-4 w-4" />
     </Ariakit.MenuButton>
   );
 

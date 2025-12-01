@@ -27,11 +27,11 @@ export default function WelcomeLayout() {
     <div className="relative flex min-h-screen flex-col bg-background">
       {/* Navigation Bar */}
       <nav className="flex items-center justify-between gap-3 bg-background px-10 py-6">
-        <ProfileComponent />
         <div className="flex items-center gap-4">
-          <NavLinks workerId={currentWorker} />
           <WorkerSelector />
+          <NavLinks workerId={currentWorker} />
         </div>
+        <ProfileComponent />
       </nav>
 
       {/* Main Content */}
@@ -40,7 +40,7 @@ export default function WelcomeLayout() {
       </main>
 
       {/* Footer with Logo */}
-      <footer className="flex justify-end px-10 py-6">
+      <footer className="flex px-10 py-6">
         <div className="h-[58px] w-[194.3px]">
           <img
             src={isDarkTheme ? '/assets/rcmc-logo-dark-theme.svg' : '/assets/rcmc-logo.svg'}

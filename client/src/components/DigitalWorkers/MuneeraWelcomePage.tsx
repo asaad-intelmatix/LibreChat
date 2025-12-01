@@ -19,7 +19,31 @@ export default function MuneeraWelcomePage() {
   return (
     <div className="flex min-h-full items-center justify-center px-40 py-24">
       <div className="flex w-full max-w-[1432px] items-center justify-between">
-        {/* Left side - Image circles */}
+        {/* Content */}
+        <div className="flex w-[561px] flex-col gap-12 text-end">
+          <div className="flex flex-col gap-2">
+            <h2 className="text-[30px] font-semibold leading-[36px] tracking-[-0.225px] text-foreground">
+              مرحبا {userName}
+            </h2>
+            <h3 className="text-[24px] font-semibold leading-[32px] tracking-[-0.144px] text-muted-foreground">
+              كيف أستطيع أن أساعدك؟
+            </h3>
+          </div>
+
+          <div className="flex gap-[14px] ltr:justify-end">
+            {/* <button className="flex h-14 items-center justify-center rounded-lg border border-border bg-background px-[22.4px] py-[11.2px] text-sm font-medium text-foreground transition-colors hover:bg-sidebar-background hover:text-sidebar-foreground">
+              xxx
+            </button> */}
+            <button
+              onClick={() => navigate('/workers/muneera/chat')}
+              className="flex h-14 items-center justify-center rounded-lg border border-border bg-background px-[22.4px] py-[11.2px] text-sm font-medium text-foreground transition-colors hover:bg-sidebar-background hover:text-sidebar-foreground"
+            >
+              محادثة
+            </button>
+          </div>
+        </div>
+
+        {/*  Image circles */}
         <div className="relative">
           <div className="absolute size-[533.023px]">
             <div
@@ -30,7 +54,7 @@ export default function MuneeraWelcomePage() {
               }}
             />
           </div>
-          <div className="absolute left-[23.92px] top-[21.36px] size-[489.459px]">
+          <div className="absolute top-[21.36px] size-[489.459px] ltr:left-[23.92px] rtl:right-[23.92px]">
             <div
               className="absolute inset-0 rounded-full"
               style={{
@@ -39,7 +63,7 @@ export default function MuneeraWelcomePage() {
               }}
             />
           </div>
-          <div className="relative left-[38.44px] top-[38.44px] size-[456.145px]">
+          <div className="relative top-[38.44px] size-[456.145px] ltr:left-[38.44px] rtl:right-[38.44px]">
             <video
               ref={videoRef}
               src="/assets/meet-muneera.mp4"
@@ -47,30 +71,6 @@ export default function MuneeraWelcomePage() {
               playsInline
               loop={false}
             />
-          </div>
-        </div>
-
-        {/* Right side - Content */}
-        <div className="flex w-[561px] flex-col gap-12 text-right">
-          <div className="flex flex-col gap-2">
-            <h2 className="text-[30px] font-semibold leading-[36px] tracking-[-0.225px] text-foreground">
-              مرحبا {userName}
-            </h2>
-            <h3 className="text-[24px] font-semibold leading-[32px] tracking-[-0.144px] text-muted-foreground">
-              كيف أستطيع أن أساعدك؟
-            </h3>
-          </div>
-
-          <div className="flex justify-end gap-[14px]">
-            {/* <button className="flex h-14 items-center justify-center rounded-lg border border-border bg-background px-[22.4px] py-[11.2px] text-sm font-medium text-foreground transition-colors hover:bg-sidebar-background hover:text-sidebar-foreground">
-              xxx
-            </button> */}
-            <button
-              onClick={() => navigate('/workers/muneera/chat')}
-              className="flex h-14 items-center justify-center rounded-lg border border-border bg-background px-[22.4px] py-[11.2px] text-sm font-medium text-foreground transition-colors hover:bg-sidebar-background hover:text-sidebar-foreground"
-            >
-              محادثة
-            </button>
           </div>
         </div>
       </div>

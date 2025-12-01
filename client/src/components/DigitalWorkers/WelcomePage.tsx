@@ -9,16 +9,16 @@ type Worker = {
 
 const workers: Worker[] = [
   {
-    id: 'muneera',
-    name: 'منيرة',
-    title: 'محلل التميز في الأداء',
-    image: '/assets/muneera-welcome.png',
-  },
-  {
     id: 'haitham',
     name: 'هيثم',
     title: 'مراقب الأداء والاستجابة',
     image: '/assets/haitham-welcom.png',
+  },
+  {
+    id: 'muneera',
+    name: 'منيرة',
+    title: 'محلل التميز في الأداء',
+    image: '/assets/muneera-welcome.png',
   },
 ];
 
@@ -50,13 +50,7 @@ export default function WelcomePage() {
                 <img
                   src={worker.image}
                   alt={worker.name}
-                  className="absolute inset-0 max-w-none object-contain"
-                  style={{
-                    height: worker.id === 'muneera' ? '104.27%' : '130.08%',
-                    left: worker.id === 'muneera' ? '27.82%' : '24.98%',
-                    top: worker.id === 'muneera' ? '11.42%' : '0%',
-                    width: worker.id === 'muneera' ? '43.11%' : '50.03%',
-                  }}
+                  className={`absolute inset-0 ${worker.id === 'muneera' ? 'top-[11.42%] h-[104.27%] w-[43.11%] ltr:left-[27.82%] rtl:right-[27.82%]' : 'top-0 h-[130.08%] w-[50.03%] ltr:left-[24.98%] rtl:right-[24.98%]'} max-w-none object-contain`}
                 />
               </div>
               <div className="w-full p-3 text-right">

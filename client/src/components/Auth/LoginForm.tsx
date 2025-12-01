@@ -108,7 +108,7 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
         <div className="flex flex-col items-end gap-2">
           <label
             htmlFor="email"
-            className="w-full text-right text-sm font-medium leading-[14px] text-foreground"
+            className="w-full text-sm font-medium leading-[14px] text-foreground"
           >
             {useUsernameLogin
               ? localize('com_auth_username').replace(/ \(.*$/, '')
@@ -139,7 +139,7 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
           <div className="flex w-full flex-col gap-1.5">
             <label
               htmlFor="password"
-              className="w-full text-right text-sm font-medium leading-[14px] text-foreground"
+              className="w-full text-sm font-medium leading-[14px] text-foreground"
             >
               {localize('com_auth_password')}
             </label>
@@ -165,7 +165,7 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
           {startupConfig.passwordResetEnabled && (
             <a
               href="/forgot-password"
-              className="mt-2 self-end text-right text-sm font-normal leading-5 text-card-foreground"
+              className="mt-2 self-end text-sm font-normal leading-5 text-card-foreground"
             >
               {localize('com_auth_password_forgot')}
             </a>
