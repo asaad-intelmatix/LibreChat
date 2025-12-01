@@ -122,7 +122,7 @@ export const router = createBrowserRouter(
                 },
                 {
                   path: 'workers/muneera/chat',
-                  element: <ChatRoute />,
+                  element: <Navigate to="/c/new" />,
                 },
               ],
             },
