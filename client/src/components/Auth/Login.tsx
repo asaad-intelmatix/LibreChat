@@ -92,7 +92,6 @@ function Login() {
 
   return (
     <>
-      <LanguageSwitcher />
       {error != null && <ErrorMessage>{localize(getLoginError(error))}</ErrorMessage>}
       {startupConfig?.emailLoginEnabled === true && (
         <LoginForm

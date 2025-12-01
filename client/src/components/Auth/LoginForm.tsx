@@ -91,16 +91,14 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
       >
         {/* Header */}
         <div className="flex flex-col items-start pb-6">
-          <h2 className="w-full text-center text-2xl font-semibold leading-[32px] tracking-[-0.144px] text-foreground">
-            {localize('com_auth_welcome_back')}
-          </h2>
+          {/* <h2 className="w-full text-center text-2xl font-semibold leading-[32px] tracking-[-0.144px] text-foreground">
+            {localize('com_ui_login_to_your_account')}
+          </h2> */}
           <p
             className="mt-2 w-full text-center text-sm font-normal leading-5 text-muted-foreground"
             dir="auto"
           >
-            {isArabic
-              ? 'الرجاء إدخال البريد الإلكتروني وكلمة المرور'
-              : 'Please enter your email and password'}
+            {localize('com_ui_please_enter_your_email_and_password')}
           </p>
         </div>
 
@@ -192,7 +190,7 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
         <button
           type="submit"
           disabled={(requireCaptcha && !turnstileToken) || isSubmitting}
-          className="h-10 w-full rounded-md bg-primary px-4 py-2 text-center text-sm font-normal leading-5 text-primary-foreground transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
+          className="hover:bg-primary/90 h-10 w-full rounded-md bg-primary px-4 py-2 text-center text-sm font-normal leading-5 text-primary-foreground transition-colors disabled:cursor-not-allowed disabled:opacity-50"
           aria-label={localize('com_auth_login')}
           data-testid="login-button"
         >

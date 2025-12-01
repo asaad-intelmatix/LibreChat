@@ -1351,5 +1351,7 @@
   "com_ui_logout": "Logout",
   "com_ui_incidents": "Incidents",
   "com_ui_welcome": "Welcome",
-  "com_ui_how_can_i_help_you": "How can I help you?"
+  "com_ui_how_can_i_help_you": "How can I help you?",
+  "com_ui_login_to_your_account": "Login to your account",
+  "com_ui_please_enter_your_email_and_password": "Please enter your email and password"
 }

@@ -2,11 +2,12 @@ import { useCallback } from 'react';
 import { useRecoilState } from 'recoil';
 import Cookies from 'js-cookie';
 import store from '~/store';
+import { useLocalize } from '~/hooks';
 
 export default function LanguageSwitcher() {
   const [langcode, setLangcode] = useRecoilState(store.lang);
   const currentLang = langcode === 'ar' || langcode?.startsWith('ar') ? 'ar' : 'en';
-
+  const localize = useLocalize();
   const handleLangChange = useCallback(
     (newLang: 'ar' | 'en') => {
       const langValue = newLang === 'ar' ? 'ar-SA' : 'en-US';
@@ -29,7 +30,7 @@ export default function LanguageSwitcher() {
             : 'bg-transparent text-foreground'
         }`}
       >
-        العربية
+        {localize('com_ui_arabic')}
       </button>
       <button
         onClick={() => handleLangChange('en')}
@@ -39,9 +40,8 @@ export default function LanguageSwitcher() {
             : 'bg-transparent text-foreground'
         }`}
       >
-        English
+        {localize('com_ui_english')}
       </button>
     </div>
   );
 }
-

@@ -1,10 +1,11 @@
 import { useContext } from 'react';
-import { ThemeContext, ThemeSelector, isDark } from '@librechat/client';
+import { ThemeContext, ThemeSelector } from '@librechat/client';
 import { TStartupConfig } from 'librechat-data-provider';
 import { ErrorMessage } from '~/components/Auth/ErrorMessage';
 import { TranslationKeys, useLocalize } from '~/hooks';
 import SocialLoginRender from './SocialLoginRender';
 import { Banner } from '../Banners';
+import LanguageSwitcher from './LanguageSwitcher';
 
 function AuthLayout({
   children,
@@ -63,9 +64,6 @@ function AuthLayout({
     <div className="relative flex min-h-screen flex-col bg-background">
       <Banner />
       <DisplayError />
-      <div className="absolute top-20 z-10 md:m-4 ltr:right-20 rtl:left-5">
-        <ThemeSelector />
-      </div>
 
       {/* Responsive split-screen layout */}
       <div className="flex h-screen max-h-screen flex-col overflow-hidden lg:flex-row">
@@ -94,22 +92,29 @@ function AuthLayout({
           </div>
         </div>
 
-        {/*  Form container */}
-        <div className="relative flex w-full max-w-full flex-1 items-center justify-center gap-4 bg-background">
-          <div className="flex w-full flex-col items-center justify-center">
-            {!hasStartupConfigError && !isFetching && header && (
-              <h1
-                className="mb-4 text-center text-3xl font-semibold text-foreground"
-                style={{ userSelect: 'none' }}
-              >
-                {header}
-              </h1>
-            )}
-            {children}
-            {!pathname.includes('2fa') &&
-              (pathname.includes('login') || pathname.includes('register')) && (
-                <SocialLoginRender startupConfig={startupConfig} />
+        <div className="relative flex w-full max-w-full flex-1 flex-col items-center justify-center gap-4 bg-background">
+          <div className="flex items-center justify-between">
+            <LanguageSwitcher />
+            <ThemeSelector />
+          </div>
+
+          {/*  Form container */}
+          <div className="">
+            <div className="flex w-full flex-col items-center justify-center">
+              {!hasStartupConfigError && !isFetching && header && (
+                <h1
+                  className="mb-4 text-center text-3xl font-semibold text-foreground"
+                  style={{ userSelect: 'none' }}
+                >
+                  {header}
+                </h1>
               )}
+              {children}
+              {!pathname.includes('2fa') &&
+                (pathname.includes('login') || pathname.includes('register')) && (
+                  <SocialLoginRender startupConfig={startupConfig} />
+                )}
+            </div>
           </div>
         </div>
       </div>

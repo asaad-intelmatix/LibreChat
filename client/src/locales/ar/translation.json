@@ -733,5 +733,7 @@
   "com_ui_logout": "الخروج",
   "com_ui_incidents": "مركز الحوادث",
   "com_ui_welcome": "مرحبا",
-  "com_ui_how_can_i_help_you": "كيف أستطيع أن أساعدك؟"
+  "com_ui_how_can_i_help_you": "كيف أستطيع أن أساعدك؟",
+  "com_ui_login_to_your_account": "تسجيل الدخول إلى حسابك",
+  "com_ui_please_enter_your_email_and_password": "الرجاء إدخال البريد الإلكتروني وكلمة المرور"
 }
