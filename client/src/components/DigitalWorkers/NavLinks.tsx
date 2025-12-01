@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
+import { useLocalize } from '~/hooks';
 
 type NavLink = {
   label: string;
@@ -13,35 +14,31 @@ type NavLinksProps = {
 };
 
 // Define nav links for each worker
-const muneeraLinks: NavLink[] = [
-  // {
-  //   label: 'xxx',
-  //   path: '/workers/muneera/xxx', // Update with actual path
-  //   showChevron: false,
-  // },
-  {
-    label: 'محادثة',
-    path: '/workers/muneera/chat', // Update with actual path
-    showChevron: false,
-  },
-];
-
-const haithamLinks: NavLink[] = [
-  {
-    label: 'محادثة',
-    path: '/workers/haitham/chat', // Update with actual path
-    showChevron: false,
-  },
-  {
-    label: 'مركز الحوادث',
-    path: '/workers/haitham/incidents', // Update with actual path
-    showChevron: false,
-  },
-];
 
 export default function NavLinks({ workerId }: NavLinksProps) {
   const navigate = useNavigate();
+  const localize = useLocalize();
 
+  const muneeraLinks: NavLink[] = [
+    {
+      label: localize('com_ui_chat'),
+      path: '/workers/muneera/chat', // Update with actual path
+      showChevron: false,
+    },
+  ];
+
+  const haithamLinks: NavLink[] = [
+    {
+      label: localize('com_ui_chat'),
+      path: '/workers/haitham/chat', // Update with actual path
+      showChevron: false,
+    },
+    {
+      label: localize('com_ui_incidents'),
+      path: '/workers/haitham/incidents', // Update with actual path
+      showChevron: false,
+    },
+  ];
   // Show nav links only when a worker is selected
   if (!workerId) {
     return null;

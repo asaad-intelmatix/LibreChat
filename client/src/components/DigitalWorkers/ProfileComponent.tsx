@@ -7,6 +7,7 @@ import { useAuthContext } from '~/hooks/AuthContext';
 import { ThemeContext, DropdownPopup } from '@librechat/client';
 import store from '~/store';
 import type * as t from '~/common';
+import { useLocalize } from '~/hooks';
 
 // Fallback avatar - will show user icon if image not available
 const UserIcon = () => (
@@ -21,6 +22,7 @@ export default function ProfileComponent() {
   const [langcode, setLangcode] = useRecoilState(store.lang);
   const [isOpen, setIsOpen] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const localize = useLocalize();
 
   const userName = user?.name || user?.username || 'User';
   const avatarUrl = user?.avatar;
@@ -57,6 +59,14 @@ export default function ProfileComponent() {
   const LanguageSelectorRow = () => (
     <div className="flex items-center justify-center rounded text-foreground">
       <div className="flex flex-1 items-center gap-1">
+        <div className="flex items-center justify-end py-0 pr-0">
+          <Languages className="h-3.5 w-3.5" />
+        </div>
+        <div className="flex flex-1 flex-col text-sm font-normal">
+          <p className="leading-tight" dir="auto">
+            {localize('com_ui_language')}
+          </p>
+        </div>
         <div className="flex h-6 items-center rounded-md bg-muted p-[2.4px]">
           <button
             onClick={() => handleLangChange('ar')}
@@ -64,7 +74,7 @@ export default function ProfileComponent() {
               currentLang === 'ar' ? 'bg-background' : 'bg-transparent'
             }`}
           >
-            العربية
+            {localize('com_ui_arabic')}
           </button>
           <button
             onClick={() => handleLangChange('en')}
@@ -72,16 +82,8 @@ export default function ProfileComponent() {
               currentLang === 'en' ? 'bg-background' : 'bg-transparent'
             }`}
           >
-            الإنجليزية
+            {localize('com_ui_english')}
           </button>
-        </div>
-        <div className="flex flex-1 flex-col text-sm font-normal">
-          <p className="text-right leading-tight" dir="auto">
-            اللغة
-          </p>
-        </div>
-        <div className="flex items-center justify-end py-0 pr-0">
-          <Languages className="h-3.5 w-3.5" />
         </div>
       </div>
     </div>
@@ -91,6 +93,14 @@ export default function ProfileComponent() {
   const ThemeSelectorRow = () => (
     <div className="flex items-center justify-center rounded text-foreground">
       <div className="flex flex-1 items-center gap-1">
+        <div className="flex items-center justify-end py-0 pr-0">
+          <Palette className="h-3.5 w-3.5" />
+        </div>
+        <div className="flex flex-1 flex-col text-sm font-normal">
+          <p className="leading-tight" dir="auto">
+            {localize('com_ui_appearance')}
+          </p>
+        </div>
         <div className="flex h-6 items-center rounded-md bg-muted p-[2.4px]">
           <button
             onClick={() => handleThemeChange('light')}
@@ -98,7 +108,7 @@ export default function ProfileComponent() {
               currentTheme === 'light' ? 'bg-background' : 'bg-transparent'
             }`}
           >
-            فاتح
+            {localize('com_ui_light')}
           </button>
           <button
             onClick={() => handleThemeChange('dark')}
@@ -106,16 +116,8 @@ export default function ProfileComponent() {
               currentTheme === 'dark' ? 'bg-background' : 'bg-transparent'
             }`}
           >
-            داكن
+            {localize('com_ui_dark')}
           </button>
-        </div>
-        <div className="flex flex-1 flex-col text-sm font-normal">
-          <p className="text-right leading-tight" dir="auto">
-            المظهر
-          </p>
-        </div>
-        <div className="flex items-center justify-end py-0 pr-0">
-          <Palette className="h-3.5 w-3.5" />
         </div>
       </div>
     </div>
@@ -123,11 +125,11 @@ export default function ProfileComponent() {
 
   const dropdownItems: t.MenuItemProps[] = [
     {
-      label: 'حسابي',
+      label: localize('com_ui_my_account'),
       render: () => (
         <div className="flex items-center justify-center rounded">
           <div className="flex flex-1 flex-col text-xs font-semibold text-sidebar-foreground">
-            <p className="text-right leading-tight">حسابي</p>
+            <p className="leading-tight">{localize('com_ui_my_account')}</p>
           </div>
         </div>
       ),
@@ -150,7 +152,7 @@ export default function ProfileComponent() {
           <button onClick={handleLogout} className="flex-1 bg-transparent">
             <LogOut className="h-3.5 w-3.5" />
           </button>
-          <span>الخروج</span>
+          <span className="text-xs font-semibold">{localize('com_ui_logout')}</span>
         </div>
       ),
     },

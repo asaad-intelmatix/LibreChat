@@ -4,6 +4,7 @@ import * as Ariakit from '@ariakit/react';
 import { ChevronsUpDown, Undo2 } from 'lucide-react';
 import { DropdownPopup } from '@librechat/client';
 import type * as t from '~/common';
+import { useLocalize } from '~/hooks';
 
 type Worker = {
   id: 'muneera' | 'haitham';
@@ -12,25 +13,26 @@ type Worker = {
   image: string;
 };
 
-const workers: Worker[] = [
-  {
-    id: 'muneera',
-    name: 'منيرة',
-    title: 'محلل التميز في الأداء',
-    image: '/assets/muneera-welcome.png',
-  },
-  {
-    id: 'haitham',
-    name: 'هيثم',
-    title: 'مراقب الأداء والاستجابة',
-    image: '/assets/haitham-welcom.png',
-  },
-];
-
 export default function WorkerSelector() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const localize = useLocalize();
+
+  const workers: Worker[] = [
+    {
+      id: 'muneera',
+      name: localize('com_ui_muneera'),
+      title: localize('com_ui_muneera_title'),
+      image: '/assets/muneera-welcome.png',
+    },
+    {
+      id: 'haitham',
+      name: localize('com_ui_haitham'),
+      title: localize('com_ui_haitham_title'),
+      image: '/assets/haitham-welcom.png',
+    },
+  ];
 
   // Determine current worker from path
   const currentWorkerId = location.pathname.includes('/muneera')
@@ -64,8 +66,8 @@ export default function WorkerSelector() {
         }`}
       >
         <div className="flex flex-1 flex-col items-start text-sidebar-foreground">
-          <span className="text-sm font-semibold">{worker.name}</span>
-          <span className="text-xs">{worker.title}</span>
+          <span className="text-left text-sm font-semibold rtl:text-right">{worker.name}</span>
+          <span className="text-left text-xs rtl:text-right">{worker.title}</span>
         </div>
         <div className="relative h-8 w-8 overflow-hidden rounded-lg">
           <img
@@ -82,7 +84,7 @@ export default function WorkerSelector() {
   // Add separator and "Return to main page" option
   dropdownItems.push({ separate: true });
   dropdownItems.push({
-    label: 'العودة للصفة الرئسية',
+    label: localize('com_ui_return_to_main_page'),
     icon: <Undo2 className="h-3.5 w-3.5" />,
     onClick: handleGoHome,
   });
@@ -98,19 +100,19 @@ export default function WorkerSelector() {
               className="absolute inset-0 size-full max-w-none object-cover opacity-70"
             />
           </div>
-          <div className="flex flex-col items-end text-right">
-            <div className="text-sm font-semibold text-sidebar-foreground">
+          <div className="flex flex-col items-start">
+            <span className="text-sm font-semibold text-sidebar-foreground">
               {currentWorker.name}
-            </div>
-            <div className="text-xs">{currentWorker.title}</div>
+            </span>
+            <span className="text-xs">{currentWorker.title}</span>
           </div>
         </>
       ) : (
         <div className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-[11.2px] bg-[linear-gradient(135deg,#887852_0%,rgba(136,120,82,0.30)_100%)]"></div>
-          <div className="flex flex-col">
-            <span className="text-sm font-semibold ltr:text-left rtl:text-right">RCMC</span>
-            <span className="text-xs">منصّة العاملين الرقميّين </span>
+          <div className="flex flex-col items-start">
+            <span className="text-sm font-semibold">RCMC</span>
+            <span className="text-xs">{localize('com_ui_digital_workers_platform')}</span>
           </div>
         </div>
       )}

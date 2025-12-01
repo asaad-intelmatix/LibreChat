@@ -1,12 +1,14 @@
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLocalize } from '~/hooks';
 import { useAuthContext } from '~/hooks/AuthContext';
 
 export default function MuneeraWelcomePage() {
   const { user } = useAuthContext();
-  const userName = user?.name || user?.username || 'أحمد';
+  const userName = user?.name || user?.username;
   const videoRef = useRef<HTMLVideoElement>(null);
   const navigate = useNavigate();
+  const localize = useLocalize();
   useEffect(() => {
     // Play video only once when component first mounts
     if (videoRef.current) {
@@ -21,16 +23,16 @@ export default function MuneeraWelcomePage() {
       <div className="flex w-full max-w-[1432px] items-center justify-between">
         {/* Content */}
         <div className="flex w-[561px] flex-col gap-12 text-end">
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col items-start gap-2">
             <h2 className="text-[30px] font-semibold leading-[36px] tracking-[-0.225px] text-foreground">
-              مرحبا {userName}
+              {localize('com_ui_welcome')} {userName}
             </h2>
             <h3 className="text-[24px] font-semibold leading-[32px] tracking-[-0.144px] text-muted-foreground">
-              كيف أستطيع أن أساعدك؟
+              {localize('com_ui_how_can_i_help_you')}
             </h3>
           </div>
 
-          <div className="flex gap-[14px] ltr:justify-end">
+          <div className="flex gap-[14px]">
             {/* <button className="flex h-14 items-center justify-center rounded-lg border border-border bg-background px-[22.4px] py-[11.2px] text-sm font-medium text-foreground transition-colors hover:bg-sidebar-background hover:text-sidebar-foreground">
               xxx
             </button> */}
@@ -38,7 +40,7 @@ export default function MuneeraWelcomePage() {
               onClick={() => navigate('/workers/muneera/chat')}
               className="flex h-14 items-center justify-center rounded-lg border border-border bg-background px-[22.4px] py-[11.2px] text-sm font-medium text-foreground transition-colors hover:bg-sidebar-background hover:text-sidebar-foreground"
             >
-              محادثة
+              {localize('com_ui_chat')}
             </button>
           </div>
         </div>
