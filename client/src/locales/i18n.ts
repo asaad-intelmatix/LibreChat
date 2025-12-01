@@ -101,4 +101,10 @@ i18n
     interpolation: { escapeValue: false },
   });
 
+// Set initial direction on load
+if (typeof document !== 'undefined') {
+  document.documentElement.dir = i18n.dir();
+  document.documentElement.lang = i18n.language;
+}
+
 export default i18n;

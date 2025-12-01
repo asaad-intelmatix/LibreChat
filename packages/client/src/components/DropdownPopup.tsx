@@ -24,6 +24,19 @@ interface DropdownProps {
   mountByState?: boolean;
   unmountOnHide?: boolean;
   finalFocus?: React.RefObject<HTMLElement>;
+  placement?:
+    | 'top'
+    | 'bottom'
+    | 'left'
+    | 'right'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'left-start'
+    | 'left-end'
+    | 'right-start'
+    | 'right-end';
 }
 
 type MenuProps = Omit<
@@ -38,9 +51,10 @@ const DropdownPopup: React.FC<DropdownProps> = ({
   setIsOpen,
   focusLoop,
   mountByState,
+  placement,
   ...props
 }) => {
-  const menu = Ariakit.useMenuStore({ open: isOpen, setOpen: setIsOpen, focusLoop });
+  const menu = Ariakit.useMenuStore({ open: isOpen, setOpen: setIsOpen, focusLoop, placement });
   if (mountByState) {
     return (
       <Ariakit.MenuProvider store={menu}>

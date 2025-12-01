@@ -6,7 +6,7 @@ import AuthLayout from '~/components/Auth/AuthLayout';
 import { TranslationKeys, useLocalize } from '~/hooks';
 
 const headerMap: Record<string, TranslationKeys> = {
-  '/login': 'com_auth_welcome_back',
+  '/login': 'com_ui_login_to_your_account',
   '/register': 'com_auth_create_account',
   '/forgot-password': 'com_auth_reset_password',
   '/reset-password': 'com_auth_reset_password',

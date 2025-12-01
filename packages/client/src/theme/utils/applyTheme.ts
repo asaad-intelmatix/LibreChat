@@ -25,58 +25,61 @@ function mapTheme(rgb: IThemeRGB): Partial<IThemeVariables> {
   const variables: Partial<IThemeVariables> = {};
 
   // Map each RGB value to its corresponding CSS variable
+  // Only includes Figma design system colors
   const mappings: Record<keyof IThemeRGB, keyof IThemeVariables> = {
-    'rgb-text-primary': '--text-primary',
-    'rgb-text-secondary': '--text-secondary',
-    'rgb-text-secondary-alt': '--text-secondary-alt',
-    'rgb-text-tertiary': '--text-tertiary',
-    'rgb-text-warning': '--text-warning',
-    'rgb-ring-primary': '--ring-primary',
-    'rgb-header-primary': '--header-primary',
-    'rgb-header-hover': '--header-hover',
-    'rgb-header-button-hover': '--header-button-hover',
-    'rgb-surface-active': '--surface-active',
-    'rgb-surface-active-alt': '--surface-active-alt',
-    'rgb-surface-hover': '--surface-hover',
-    'rgb-surface-hover-alt': '--surface-hover-alt',
-    'rgb-surface-primary': '--surface-primary',
-    'rgb-surface-primary-alt': '--surface-primary-alt',
-    'rgb-surface-primary-contrast': '--surface-primary-contrast',
-    'rgb-surface-secondary': '--surface-secondary',
-    'rgb-surface-secondary-alt': '--surface-secondary-alt',
-    'rgb-surface-tertiary': '--surface-tertiary',
-    'rgb-surface-tertiary-alt': '--surface-tertiary-alt',
-    'rgb-surface-dialog': '--surface-dialog',
-    'rgb-surface-submit': '--surface-submit',
-    'rgb-surface-submit-hover': '--surface-submit-hover',
-    'rgb-surface-destructive': '--surface-destructive',
-    'rgb-surface-destructive-hover': '--surface-destructive-hover',
-    'rgb-surface-chat': '--surface-chat',
-    'rgb-border-light': '--border-light',
-    'rgb-border-medium': '--border-medium',
-    'rgb-border-medium-alt': '--border-medium-alt',
-    'rgb-border-heavy': '--border-heavy',
-    'rgb-border-xheavy': '--border-xheavy',
-    'rgb-brand-purple': '--brand-purple',
-    'rgb-presentation': '--presentation',
-
-    // Utility colors
+    // Core colors
     'rgb-background': '--background',
     'rgb-foreground': '--foreground',
+
+    // Card colors
+    'rgb-card': '--card',
+    'rgb-card-foreground': '--card-foreground',
+
+    // Popover colors
+    'rgb-popover': '--popover',
+    'rgb-popover-foreground': '--popover-foreground',
+
+    // Primary colors
     'rgb-primary': '--primary',
     'rgb-primary-foreground': '--primary-foreground',
+
+    // Secondary colors
     'rgb-secondary': '--secondary',
     'rgb-secondary-foreground': '--secondary-foreground',
+
+    // Muted colors
     'rgb-muted': '--muted',
     'rgb-muted-foreground': '--muted-foreground',
+
+    // Accent colors
     'rgb-accent': '--accent',
     'rgb-accent-foreground': '--accent-foreground',
+
+    // Destructive colors
+    'rgb-destructive': '--destructive',
     'rgb-destructive-foreground': '--destructive-foreground',
+
+    // Border and input
     'rgb-border': '--border',
     'rgb-input': '--input',
     'rgb-ring': '--ring',
-    'rgb-card': '--card',
-    'rgb-card-foreground': '--card-foreground',
+
+    // Sidebar colors
+    'rgb-sidebar-background': '--sidebar-background',
+    'rgb-sidebar-foreground': '--sidebar-foreground',
+    'rgb-sidebar-primary': '--sidebar-primary',
+    'rgb-sidebar-primary-foreground': '--sidebar-primary-foreground',
+    'rgb-sidebar-accent': '--sidebar-accent',
+    'rgb-sidebar-accent-foreground': '--sidebar-accent-foreground',
+    'rgb-sidebar-border': '--sidebar-border',
+    'rgb-sidebar-ring': '--sidebar-ring',
+
+    // Chart colors
+    'rgb-chart-1': '--chart-1',
+    'rgb-chart-2': '--chart-2',
+    'rgb-chart-3': '--chart-3',
+    'rgb-chart-4': '--chart-4',
+    'rgb-chart-5': '--chart-5',
   };
 
   Object.entries(mappings).forEach(([rgbKey, cssVar]) => {

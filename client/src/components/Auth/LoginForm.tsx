@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Turnstile } from '@marsidev/react-turnstile';
-import { ThemeContext, Spinner, Button, isDark } from '@librechat/client';
+import { ThemeContext, Spinner, isDark } from '@librechat/client';
+import { useRecoilValue } from 'recoil';
 import type { TLoginUser, TStartupConfig } from 'librechat-data-provider';
 import type { TAuthContext } from '~/common';
 import { useResendVerificationEmail, useGetStartupConfig } from '~/data-provider';
 import { useLocalize } from '~/hooks';
+import store from '~/store';
 
 type TLoginFormProps = {
   onSubmit: (data: TLoginUser) => void;
@@ -17,6 +19,8 @@ type TLoginFormProps = {
 const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, setError }) => {
   const localize = useLocalize();
   const { theme } = useContext(ThemeContext);
+  const langcode = useRecoilValue(store.lang);
+  const isArabic = langcode === 'ar' || langcode?.startsWith('ar');
   const {
     register,
     getValues,
@@ -43,7 +47,6 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
       setShowResendLink(false);
     },
   });
-
   if (!startupConfig) {
     return null;
   }
@@ -81,43 +84,63 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
         </div>
       )}
       <form
-        className="mt-6"
+        className="flex w-full max-w-[348px] flex-col gap-4"
         aria-label="Login form"
         method="POST"
         onSubmit={handleSubmit((data) => onSubmit(data))}
       >
-        <div className="mb-4">
-          <div className="relative">
-            <input
-              type="text"
-              id="email"
-              autoComplete={useUsernameLogin ? 'username' : 'email'}
-              aria-label={localize('com_auth_email')}
-              {...register('email', {
-                required: localize('com_auth_email_required'),
-                maxLength: { value: 120, message: localize('com_auth_email_max_length') },
-                pattern: {
-                  value: useUsernameLogin ? /\S+/ : /\S+@\S+\.\S+/,
-                  message: localize('com_auth_email_pattern'),
-                },
-              })}
-              aria-invalid={!!errors.email}
-              className="webkit-dark-styles transition-color peer w-full rounded-2xl border border-border-light bg-surface-primary px-3.5 pb-2.5 pt-3 text-text-primary duration-200 focus:border-green-500 focus:outline-none"
-              placeholder=" "
-            />
-            <label
-              htmlFor="email"
-              className="absolute start-3 top-1.5 z-10 origin-[0] -translate-y-4 scale-75 transform bg-surface-primary px-2 text-sm text-text-secondary-alt duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-green-600 dark:peer-focus:text-green-500 rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4"
-            >
-              {useUsernameLogin
-                ? localize('com_auth_username').replace(/ \(.*$/, '')
-                : localize('com_auth_email_address')}
-            </label>
-          </div>
+        {/* Header */}
+        <div className="flex flex-col items-start pb-6">
+          {/* <h2 className="w-full text-center text-2xl font-semibold leading-[32px] tracking-[-0.144px] text-foreground">
+            {localize('com_ui_login_to_your_account')}
+          </h2> */}
+          <p
+            className="mt-2 w-full text-center text-sm font-normal leading-5 text-muted-foreground"
+            dir="auto"
+          >
+            {localize('com_ui_please_enter_your_email_and_password')}
+          </p>
+        </div>
+
+        {/* Email Input */}
+        <div className="flex flex-col items-end gap-2">
+          <label
+            htmlFor="email"
+            className="w-full text-sm font-medium leading-[14px] text-foreground"
+          >
+            {useUsernameLogin
+              ? localize('com_auth_username').replace(/ \(.*$/, '')
+              : localize('com_auth_email_address')}
+          </label>
+          <input
+            type="text"
+            id="email"
+            autoComplete={useUsernameLogin ? 'username' : 'email'}
+            aria-label={localize('com_auth_email')}
+            {...register('email', {
+              required: localize('com_auth_email_required'),
+              maxLength: { value: 120, message: localize('com_auth_email_max_length') },
+              pattern: {
+                value: useUsernameLogin ? /\S+/ : /\S+@\S+\.\S+/,
+                message: localize('com_auth_email_pattern'),
+              },
+            })}
+            aria-invalid={!!errors.email}
+            className="h-10 w-full rounded-md border border-input bg-background px-4 py-2 text-sm leading-5 text-foreground transition-colors placeholder:text-muted-foreground focus:outline-none"
+            placeholder="m@example.com"
+          />
           {renderError('email')}
         </div>
-        <div className="mb-2">
-          <div className="relative">
+
+        {/* Password Input */}
+        <div className="flex flex-col items-start gap-1.5">
+          <div className="flex w-full flex-col gap-1.5">
+            <label
+              htmlFor="password"
+              className="w-full text-sm font-medium leading-[14px] text-foreground"
+            >
+              {localize('com_auth_password')}
+            </label>
             <input
               type="password"
               id="password"
@@ -132,27 +155,22 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
                 maxLength: { value: 128, message: localize('com_auth_password_max_length') },
               })}
               aria-invalid={!!errors.password}
-              className="webkit-dark-styles transition-color peer w-full rounded-2xl border border-border-light bg-surface-primary px-3.5 pb-2.5 pt-3 text-text-primary duration-200 focus:border-green-500 focus:outline-none"
+              className="h-10 w-full rounded-md border border-input bg-background px-4 py-2 text-sm leading-5 text-foreground transition-colors placeholder:text-muted-foreground focus:outline-none"
               placeholder=" "
             />
-            <label
-              htmlFor="password"
-              className="absolute start-3 top-1.5 z-10 origin-[0] -translate-y-4 scale-75 transform bg-surface-primary px-2 text-sm text-text-secondary-alt duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-green-600 dark:peer-focus:text-green-500 rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4"
-            >
-              {localize('com_auth_password')}
-            </label>
           </div>
           {renderError('password')}
+          {startupConfig.passwordResetEnabled && (
+            <a
+              href="/forgot-password"
+              className="mt-2 self-end text-sm font-normal leading-5 text-card-foreground"
+            >
+              {localize('com_auth_password_forgot')}
+            </a>
+          )}
         </div>
-        {startupConfig.passwordResetEnabled && (
-          <a
-            href="/forgot-password"
-            className="inline-flex p-1 text-sm font-medium text-green-600 transition-colors hover:text-green-700 dark:text-green-400 dark:hover:text-green-300"
-          >
-            {localize('com_auth_password_forgot')}
-          </a>
-        )}
 
+        {/* Captcha */}
         {requireCaptcha && (
           <div className="my-4 flex justify-center">
             <Turnstile
@@ -168,18 +186,16 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
           </div>
         )}
 
-        <div className="mt-6">
-          <Button
-            aria-label={localize('com_auth_continue')}
-            data-testid="login-button"
-            type="submit"
-            disabled={(requireCaptcha && !turnstileToken) || isSubmitting}
-            variant="submit"
-            className="h-12 w-full rounded-2xl"
-          >
-            {isSubmitting ? <Spinner /> : localize('com_auth_continue')}
-          </Button>
-        </div>
+        {/* Submit Button */}
+        <button
+          type="submit"
+          disabled={(requireCaptcha && !turnstileToken) || isSubmitting}
+          className="hover:bg-primary/90 h-10 w-full rounded-md bg-primary px-4 py-2 text-center text-sm font-normal leading-5 text-primary-foreground transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+          aria-label={localize('com_auth_login')}
+          data-testid="login-button"
+        >
+          {isSubmitting ? <Spinner /> : localize('com_auth_login')}
+        </button>
       </form>
     </>
   );
