@@ -1,11 +1,12 @@
 import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '~/hooks/AuthContext';
 
 export default function MuneeraWelcomePage() {
   const { user } = useAuthContext();
   const userName = user?.name || user?.username || 'أحمد';
   const videoRef = useRef<HTMLVideoElement>(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     // Play video only once when component first mounts
     if (videoRef.current) {
@@ -64,7 +65,10 @@ export default function MuneeraWelcomePage() {
             {/* <button className="flex h-14 items-center justify-center rounded-lg border border-border bg-background px-[22.4px] py-[11.2px] text-sm font-medium text-foreground transition-colors hover:bg-sidebar-background hover:text-sidebar-foreground">
               xxx
             </button> */}
-            <button className="flex h-14 items-center justify-center rounded-lg border border-border bg-background px-[22.4px] py-[11.2px] text-sm font-medium text-foreground transition-colors hover:bg-sidebar-background hover:text-sidebar-foreground">
+            <button
+              onClick={() => navigate('/workers/muneera/chat')}
+              className="flex h-14 items-center justify-center rounded-lg border border-border bg-background px-[22.4px] py-[11.2px] text-sm font-medium text-foreground transition-colors hover:bg-sidebar-background hover:text-sidebar-foreground"
+            >
               محادثة
             </button>
           </div>

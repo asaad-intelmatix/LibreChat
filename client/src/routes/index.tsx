@@ -120,6 +120,10 @@ export const router = createBrowserRouter(
                   path: 'workers/haitham',
                   element: <HaithamWelcomePage />,
                 },
+                {
+                  path: 'workers/muneera/chat',
+                  element: <ChatRoute />,
+                },
               ],
             },
             {

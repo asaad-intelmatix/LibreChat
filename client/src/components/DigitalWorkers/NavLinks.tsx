@@ -14,14 +14,14 @@ type NavLinksProps = {
 
 // Define nav links for each worker
 const muneeraLinks: NavLink[] = [
+  // {
+  //   label: 'xxx',
+  //   path: '/workers/muneera/xxx', // Update with actual path
+  //   showChevron: false,
+  // },
   {
-    label: 'xxx',
-    path: '/workers/muneera/xxx', // Update with actual path
-    showChevron: false,
-  },
-  {
-    label: 'محدثات',
-    path: '/workers/muneera/updates', // Update with actual path
+    label: 'محادثة',
+    path: '/workers/muneera/chat', // Update with actual path
     showChevron: false,
   },
 ];
@@ -72,4 +72,3 @@ export default function NavLinks({ workerId }: NavLinksProps) {
     </div>
   );
 }
-
